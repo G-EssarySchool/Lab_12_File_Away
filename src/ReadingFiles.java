@@ -66,10 +66,10 @@ public class  ReadingFiles {
                 reader.close(); // must close the file to seal it and clear buffer
                 System.out.println("\n\nData file read!"); //Success message
                 System.out.println("File Summary:");
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println("Number of Characters:" + totalCharacters);
+                System.out.println("Number of Lines: " + line);
+                System.out.println("Number of Spaces: ");
+                System.out.println("Number of Words: ");
+                System.out.println("Number of Characters: " + totalCharacters);
 
                  /*
                     This is where the program stops displaying the read file to the user
