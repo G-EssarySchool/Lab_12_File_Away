@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class  ReadingFiles {
+public class  ListMaker {
     //need to add the "throws IOException" after typical main phrase
     public static void main(String[] args) throws IOException   {
 
@@ -53,11 +53,26 @@ public class  ReadingFiles {
                 //Rec holds what the reader finds on the line
                 String rec = "";
                 int totalCharacters = 0;
+                int totalSpaces = 0;
+                int totalWords = 0;
 
                 //Moving through file, reading, and printing each line of the selected file
                 while (reader.ready()) {
                     rec = reader.readLine();
                     totalCharacters += rec.length();
+                    // Count spaces on this line
+                    int spacesOnLine = 0;
+                    for (int i = 0; i < rec.length(); i++) {
+                        if (rec.charAt(i) == ' ') {
+                            spacesOnLine++;
+                        }
+                    }
+                    totalSpaces += spacesOnLine;
+
+                    // Count words (spaces + 1), but skip empty lines
+                    if (rec.trim().length() > 0) {
+                        totalWords += spacesOnLine + 1;
+                    }
                     line++;
                     //Prints the line # and the contents of the line
                     System.out.printf("\nLine%4d: %-60s ", line, rec);
@@ -67,8 +82,8 @@ public class  ReadingFiles {
                 System.out.println("\n\nData file read!"); //Success message
                 System.out.println("\nFile Summary:");
                 System.out.println("Number of Lines: " + line);
-                System.out.println("Number of Spaces: ");
-                System.out.println("Number of Words: ");
+                System.out.println("Number of Spaces: " + totalSpaces);
+                System.out.println("Number of Words: " + totalWords);
                 System.out.println("Number of Characters: " + totalCharacters);
 
                  /*
